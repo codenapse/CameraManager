@@ -189,13 +189,13 @@ public class CameraManager: NSObject, AVCaptureFileOutputRecordingDelegate, UIGe
     private var maxZoomScale    = CGFloat(1.0)
 
     private var tempFilePath: NSURL = {
-        let tempPath = NSURL(fileURLWithPath: NSTemporaryDirectory()).URLByAppendingPathComponent("tempMovie").URLByAppendingPathExtension("mp4").absoluteString
-        if NSFileManager.defaultManager().fileExistsAtPath(tempPath) {
+        let tempPath = NSURL(fileURLWithPath: NSTemporaryDirectory()).URLByAppendingPathComponent("tempMovie")!.URLByAppendingPathExtension("mp4")!.absoluteString
+        if NSFileManager.defaultManager().fileExistsAtPath(tempPath!) {
             do {
-                try NSFileManager.defaultManager().removeItemAtPath(tempPath)
+                try NSFileManager.defaultManager().removeItemAtPath(tempPath!)
             } catch { }
         }
-        return NSURL(string: tempPath)!
+        return NSURL(string: tempPath!)!
     }()
     
     
@@ -321,8 +321,8 @@ public class CameraManager: NSObject, AVCaptureFileOutputRecordingDelegate, UIGe
         movieOutput = nil
     }
     
-    @available(*, unavailable, renamed="capturePictureWithCompletion")
-    public func capturePictureWithCompletition(imageCompletition: (UIImage?, NSError?) -> Void) {}
+    //@available(*, unavailable, renamed="capturePictureWithCompletion")
+    //public func capturePictureWithCompletition(imageCompletition: (UIImage?, NSError?) -> Void) {}
     
     /**
     Captures still image from currently running capture session.
@@ -357,8 +357,8 @@ public class CameraManager: NSObject, AVCaptureFileOutputRecordingDelegate, UIGe
     
     }
     
-    @available(*, unavailable, renamed="capturePictureWithCompletion")
-    public func capturePictureDataWithCompletition(imageCompletition: (NSData?, NSError?) -> Void) {}
+    //@available(*, unavailable, renamed="capturePictureWithCompletion")
+    //public func capturePictureDataWithCompletition(imageCompletition: (NSData?, NSError?) -> Void) {}
     
     /**
      Captures still image from currently running capture session.
@@ -410,8 +410,8 @@ public class CameraManager: NSObject, AVCaptureFileOutputRecordingDelegate, UIGe
         }
     }
     
-    @available(*, unavailable, renamed="stopVideoRecording")
-    public func stopRecordingVideo(completition:(videoURL: NSURL?, error: NSError?) -> Void) {}
+    //@available(*, unavailable, renamed="stopVideoRecording")
+    //public func stopRecordingVideo(completition:(videoURL: NSURL?, error: NSError?) -> Void) {}
         
     /**
     Stop recording a video. Save it to the cameraRoll and give back the url.
